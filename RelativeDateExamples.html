@@ -1,0 +1,103 @@
+<!--
+// relative Date markers
+//
+// used for repeating mult-week courses in automatically inserting 
+// specific dates for each week's message.
+//
+// i.e. *week1_fri* or *week3_tue* are replaced with the specific dates 
+// when *week1_mon* is defined
+-->
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Mike Sult">
+<meta name="description" content="Proof of concept page for RelativeDates.js which can add specific dates to pages containing dateMarkers so that pages from recurring courses can have their dues dates easily updated for upcoming new school terms.">
+
+<title>Relative Dates Examples</title>
+<link href="RelativeDatesStyle.css" rel="stylesheet" type="text/css">    
+<!--
+<script src="RelativeDatesBeta.js"></script>
+-->
+
+<script src="http://www.guitarland.com/javascripts/RelativeDatesBeta.js"></script>
+
+</head>
+
+<body onload="addDatesToPage()">
+<main>
+<div id="content">
+<h1>RelativeDates.js</h1>
+<h2>proof of concept</h2>
+<p>This page uses a javascript tool will allow the user to enter dateMarkers within a html page used in a recurring web course.  The dateMarkers are in the form of &#8727;week1_mon&#8727; (week 1, monday).  These markers can have their text dynamically updated to reflect a new First Monday value for each school term.  </p>
+<p>This page has the dateMarkers already placed on the page.  The javascript functions read the page and process it so that the dateMarkers are turned into specific dates with reference to the First Monday setting.</p> 
+<p>Normal usage is include a script tag in the HEAD section that references the <a href="RelativeDates.js" target="_blank">RelativeDates,js</a> script file. and to add a short javascript to the page containing the following variable:<br /><br />
+var startMonday = new Date("Sept 26, 2016"); // your start date<br /> (The first loading of this page tries to set startMonday to today, if it isn't a monday an adjustment was made to the monday of this week.)
+<br />
+<br />First Monday:<input type="text" id="startMonday" value=""></input>
+<button class="button" id="updateStart" onclick="updateStartDate()">NEW START DATE</button><br />(If the entered date is not a monday an adjustment will be made to the monday of that week.)
+<br />
+</p>
+<div class="exampleDemo">
+<h2>Monday of the week is *week1_mon*</h2>
+<p class="exampleDemo">
+the rest of week 1 is:<br />
+*week1_tue*<br />
+*week1_wed*<br />
+*week1_thu*<br />
+*week1_fri*<br />
+*week1_sat*<br />
+*week1_sun*<br />
+</p>
+<hr>
+<p class="exampleDemo">
+If the quarter started on that Monday, then when is the 4th wednesday?<br />
+Answer: *week4_wed*<br /><br />
+When Thursday in week 10?<br />
+Answer: *week10_thu*<br /><br />
+When is the last day of week 12?<br />
+Answer: *week12_fri*
+</p>
+</div> <!-- end exampleDemo div -->
+</div> <!-- end page content div -->
+ <aside>
+	<h2>Related</h2>
+	<ul>
+	  <li><a href="RelativeDates.html" target="_blank">addition information</a></li>
+	  <li><a href="RelativeDatesDemo.html" target="_blank">using document.referrer to set the first Monday to Feb.</a></li>
+	</ul>
+  </aside>
+</main>
+
+<script>
+var startMonday = getMonday( new Date() );
+console.log(startMonday.toDateString());
+var startMondayElement = document.getElementById("startMonday");
+startMondayElement.value = startMonday.toDateString();
+
+var updateStartDateButton = document.getElementById("updateStart");
+// console.log(updateStartDateButton);
+updateStartDateButton.onclick = updateStartDate;
+
+function updateStartDate() {
+    var changeFirstMonday = document.getElementById('startMonday').value;
+    var msg = "updateStartDate() changeFirstMonday=" + changeFirstMonday;
+    console.log(msg);
+    if(changeFirstMonday != "") {
+        createRelativeDateDict(changeFirstMonday, numberOfWeeks)
+        replaceRelativeDates();
+//        document.getElementById("demo").innerHTML = showFullMap();
+    }
+    else {
+        return;
+    }
+}
+
+</script>
+
+<div id="demo"></div>
+<div id='footer'></div>
+<script src="lastModified.js"></script>
+</body>
+
+</html>

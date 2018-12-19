@@ -1,0 +1,104 @@
+/* RelativeDatesStyle.css */
+html {
+    font-size: 10px;
+}
+
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.4em;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+body {
+/*    margin-left: 20px; */
+    width: 80%;
+    margin: 0 auto;
+    max-width: 1280px;
+    min-width: 480px;    
+    background-color: #ffffff;
+    padding: 0 20px 20px 20px;
+/*    border: 3px solid #007700; */
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.whiteBG {
+    background-color: #ffffff;
+}
+
+aside {
+  flex: 1; 
+  box-sizing: border-box;
+  margin-left: 10px;
+  margin-top: 150px;
+  background-color: #e0e0e0;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+}
+
+aside li {
+  padding-bottom: 10px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 10px;
+/*  font-size: 1.6em; */
+}
+
+#content {
+   flex: 3;
+}
+h1 {
+    font-size: 4.5em;
+    text-align: center;
+    color: #007700;
+    text-shadow: 1px 2px 3px black;
+}
+h2 {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.6em;
+    background-color: #f5f5ff;
+/*    border: 1px dotted grey; */
+}
+table {
+/*  font-size: 1.6em; */
+}
+ul {
+  font-size: 1.6em;
+}
+
+a:hover {     
+  background: orange;
+}
+
+/* on RelativeDates.html */
+#demo1 {
+    background-color: #ffeeee;
+}
+
+#demo2 {
+    background-color: #eeffee;
+}
+
+/* on RelativeDateExamples.html */
+.exampleDemo {
+    background-color: #eeffee;
+}
+
+#footer {
+    font-size: 1.2em;
+    color: #0000dd;
+}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Mike Sult">
+<meta name="description" content="Proof of concept page for RelativeDates.js which can add specific dates to pages containing dateMarkers so that pages from recurring courses can have their dues dates easily updated for upcoming new school terms.">
+
+<title>RelativeDatesDemo</title>
+<link href="RelativeDatesStyle.css" rel="stylesheet" type="text/css">    
+<!--
+<script src="setStartDateBeta.js"></script>
+<script src="RelativeDatesBeta.js"></script>
+-->
+<script src="http://www.guitarland.com/javascripts/RelativeDatesBeta.js"></script>
+<script src="http://www.guitarland.com/javascripts/setStartDateBeta.js"></script>
+
+</head>
+<body onload="addDatesToPage2()">
+<div id="content">
+<h1>RelativeDates.js</h1>
+
+<p class="whiteBG">
+<div id="referrer-box"></div>
+</p>
+
+<script>
+document.getElementById("referrer-box").innerHTML = "<p class=\"whiteBG\">document.referrer="+document.referrer + "</p>";
+console.log("document.referrer="+document.referrer);
+</script>
+
+<p class="whiteBG">
+<a href="RelativeDatesDemo.html" target="_blank">using document.referrer to set the first Monday to Mar</a>
+<h2>The first Monday (week 1) is *week1_mon*</h2>
+<p class="whiteBG">the rest of week 1 is:</p>
+<ul>
+<li>*week1_tue*</li>
+<li>*week1_wed*</li>
+<li>*week1_thu*</li>
+<li>*week1_fri*</li>
+<li>*week1_sat*</li>
+<li>*week1_sun*</li>
+</ul>
+<h2>Monday of week 2 is *week2_mon*</h2>
+<p class="whiteBG">the rest of week 2 is:</p>
+<ul>
+<li>*week2_tue*</li>
+<li>*week2_wed*</li>
+<li>*week2_thu*</li>
+<li>*week2_fri*</li>
+<li>*week2_sat*</li>
+<li>*week2_sun*</li>
+</ul>
+<h2>Monday of week 3 is *week3_mon*</h2>
+<p class="whiteBG">the rest of week 3 is:</p>
+<ul>
+<li>*week3_tue*</li>
+<li>*week3_wed*</li>
+<li>*week3_thu*</li>
+<li>*week3_fri*</li>
+<li>*week3_sat*</li>
+<li>*week3_sun*</li>
+</ul>
+<h2>The remaining mondays are:</h2>
+<ul>
+<li>*week4_mon*</li>
+<li>*week5_mon*</li>
+<li>*week6_mon*</li>
+<li>*week7_mon*</li>
+<li>*week8_mon*</li>
+<li>*week9_mon*</li>
+<li>*week10_mon*</li>
+<li>*week11_mon*</li>
+<li>*week12_mon*</li>
+</ul>
+</div> <!-- end page content -->
+
+<div id="footer"></div>
+<script src="lastModified.js"></script>
+</body>
+</html>

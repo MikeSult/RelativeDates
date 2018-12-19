@@ -1,0 +1,168 @@
+<!--
+// relative Date markers
+//
+// used for repeating mult-week courses in automatically inserting specific dates for each week's message.
+//
+// i.e. *week1_fri* or *week3_tue* are replaced with the specific dates when *week1_mon* is defined
+-->
+<!DOCTYPE html>
+<htm lang="en-US"l>
+<head>
+<meta charset="utf-8">
+<meta name="author" content="Mike Sult">
+<meta name="description" content="Proof of concept page for RelativeDates.js which can add specific dates to pages containing dateMarkers so that pages from recurring courses can have their dues dates easily updated for upcoming new school terms.">
+<title>Relative Dates</title>
+    
+<link href="RelativeDatesStyle.css" rel="stylesheet" type="text/css">    
+
+<!--
+<script src="RelativeDatesBeta.js"></script>
+-->
+
+<script src="http://www.guitarland.com/javascripts/RelativeDatesBeta.js"></script>
+
+</head>
+<body>
+<main>
+<div id="content">
+<h1>RelativeDates.js</h1>
+<h2>PROBLEM:</h2>
+<p>I'm old school.  I still write basic html pages that I use in my online teaching.  I want to put specific dates on my html course material such as due dates etc. but I don't want have to change them for each quarter.  I want a tag such as week4_fri that would be translated to a specific date when week1_mon is defined.  I could set up a template engine but I want something simple just for this one use case.</p>  
+<h2>SOLUTION:</h2>
+<p>RelativeDates.js is the solution I'm using for this problem.  Basically a very simple template engine, it's only template is the dateMarkers.  I can add two scripts to html pages which I use in a 12 week recurring course.(NOTE: On this demo page only one javacript, RelativeDates.js is added, the start date is determined dynamically by this demo page's value.)</p>
+<ul>
+<li><strong>RelativeDates.js</strong> (contains the functions of this one-trick pony)
+<li><strong>setStartDate.js</strong> (used to set the startMonday date [first Monday])
+</ul>
+<p>Then I can type dateMarker tags (i.e. *week4_fri*) on my page and they will be translated into specific dates in relation to the currently defined start date (week1_mon) date.  For each new quarter I need to edit only the setStartDate.js with a new start date then reuse the same html pages.  New dates will appear on the pages relative to the updated start date.</p>
+
+<h2>proof of concept</h2>
+<p>This javascript tool will allow the user to enter dateMarkers within an html page used in a recurring web course.  The dateMarkers are in the form of *week1_mon* (week 1, monday).  These markers are then processed to wrap the dateMarker inside a span element with id and name set to the dateMarker. The text of the span is set to the original dateMarker so that the page looks identical to the unprocessed version.  Although not necessary (see automatic usage), the processed version could be saved and retained as the reuseable copy. When reused the spans can have their text dynamically updated to reflect a new First Monday value for each quarter (via the updated setStartDate.js).  </p>
+<p>Below on the left shows an example of the raw dateMarkers inserting into text. The right side shows the processed version of the example (via the processMarkers() function). It contains the inserted span tag (not visible on the page).  The section above the example has the First Monday value (editable, type/paste in other monday dates i.e. winter or spring).  A Date map is created using the First Monday value.    The "REPLACE DATES" button causes the dateMarkers of the processed text to be be replaced with specific dates from the Date map.<br /><br />
+Weekday abbreviations (using week1): *week1_mon*, *week1_tue*, *week1_wed*, *week1_thu*, *week1_fri*, *week1_sat*, *week1_sun*.</p>
+<p>The javascript functions and variables used on this page are: </p>
+<ul>
+<li><strong>startMonday</strong> - user defined specific date of week1_mon, all other dates are relative.</li>
+<li><strong>replaceRelativeDates()</strong> - replaces the dateMarkers with the specific dates.</li><br />
+<li>functions used internally:
+<li><strong>createRelativeDateDict()</strong> - creates a dictionary with keys of dateMarkers and values of specific dates determined by a First Monday value.</li>
+<li><strong>processMarkers()</strong> - processes text that contains dateMarkers and inserts span tags into the final processed output.  The processed output could be saved and is reuseable for each quarter.</li>
+<li><strong>showFullMap()</strong> = for debugging and display of key/value pairs</li>
+</ul>
+
+<hr>
+
+<!----------
+The quarter begins *week1_mon* and ends on *week12_fri* <br>
+Assignment 1 due on *week1_fri* <br>
+Week 2, monday is *week2_mon* <br>
+Our weekend field trip is *week10_sat* 10:00am<br>
+Week 12, wednesday is *week12_wed*
+------------------->
+<a name="example"></a>
+<p>First Monday:<input type="text" id="startMonday"></input> &nbsp;&nbsp;winter quarter = Jan 9 2017 &nbsp;&nbsp;spring quarter = Apr 10 2017
+<br />click the "REPLACE DATES" button below to see marker change to dates.<BR>
+<br />Try your own example: Input text with dateMarkers below then click "PROCESS INPUT" button.  <br>The display below swill be replaced with your input.  The raw input is displayed on the left and the processed output is displayed on the right</p>
+<button class="button" id="processInput">PROCESS INPUT</button><br />
+<textarea id="inputText" rows=4 cols=60></textarea>
+<BR />
+<p>Then click the "REPLACE DATES" button below.</p>
+
+<hr>
+<p>Click "replace Dates" to see specific dates.</p> 
+<table border=1><tr><th><p class="whiteBG">raw dateMarked text</p></th><th><p class="whiteBG">processed text</p>&nbsp;&nbsp;&nbsp;<button  class="button"  id="replaceDates">REPLACE DATES</button></th></tr>
+<tr><td>
+<p id="demo1"></p>
+</td><td>
+<p id="demo2"></p>
+</td></tr></table>
+
+<hr>
+<p>Current design has an array of <strong><code>[url,startMonday]</code></strong> pairs.<br /><br />
+
+If the DOM's document.referrer value is available and matches an url in the list, then that page has a specific start time in the list (possibly) different than the current default (default is the first value of the array).  The array should always be initialized with a first key:value pair:
+
+[["any","no-dates" || <startDate>], ... ]
+
+this will mean any referrer will get either the default "no dates" behavior or a specific startMonday date.  Additional pairs in the form of ["referrer-web-address", "startMonday"] can be added to the array.  See caveat below.
+</p>
+
+<p><strong>Current Issues:</strong><br />Since the LMS Canvas doesn't reveal the referrer value, I currently don't have a way to find out the referrer (or other info to id the referrer) The document.referrer value is needed if two courses with different startMonday values are overlapping (i.e. early summer and regular summer) and accessing the same document. The dateMarkers should display different values depending on the class.  Until I find a solution, in situations of overlapping courses I have to suppress the dates and display the old version which was a weekday name only.  If the firstMonday variable is set to "no-dates", the dateMarkers will be displayed with simply the weekday (i.e. "...due on *week3_fri*" becomes "...due on Friday".)  It is assumed that these are weekly documents or used in a situation where it's clear which week is being discussed.</p>  
+
+
+<p id="demo3"></p>
+</div> <!-- end page content -->
+
+ <aside>
+	<h2>Related</h2>
+	<ul>
+	  <li><a href="#example">example below</a></li>
+	  <li><a href="RelativeDateExamples.html" target="_blank">automatic usage example</a></li>
+	  <li><a href="RelativeDatesDemo.html" target="_blank">using document.referrer to set first Monday to Jan.</a></li>
+	</ul>
+  </aside>
+</main>
+
+
+<script>
+
+var startMonday = new Date("Jan 9, 2017");
+var numberOfWeeks = 20;
+</script>
+
+<script>
+
+var rawMarkedText = "The quarter begins *week1_mon* and ends on *week12_fri* \
+<br /><br />Test 1, 2 and 3 are due on *week2_fri*. \
+<br />Test 4 is due on, *week3_fri*. \
+<br />Drop-in sessions this week is on *week4_tue* \
+<br />Special meeting this week is on *week4_wed* \
+<br />Test 5 and 6 are due on *week4_fri*. \
+<br />Test 7 and Midterm 1 are both due on *week6_fri*. \
+<br />Midterm 2 is due on *week10_fri* \
+<br /><br />The end of quarter celebration will be on *week13_thu*";
+
+
+
+// onclick handlers
+var replaceDatesButton = document.getElementById("replaceDates");
+replaceDatesButton.onclick = updateDatesOnPage;
+var processInputButton = document.getElementById("processInput");
+processInputButton.onclick = processInput;
+
+
+function processInput() {
+    var textTestCase = document.getElementById("inputText").value;
+    var processedText = "";
+    var startMonday = document.getElementById('startMonday').value;
+    createRelativeDateDict(startMonday, numberOfWeeks);
+    
+    if( textTestCase != "") {
+        document.getElementById("demo1").innerHTML = textTestCase;
+        document.getElementById("demo2").innerHTML = processMarkers(textTestCase);
+    }
+}
+
+function updateDatesOnPage() {
+    var firstDay = document.getElementById('startMonday').value;
+    createRelativeDateDict(firstDay, numberOfWeeks);
+    console.log(document.getElementById("demo2").innerHTML);
+    replaceRelativeDates();
+}
+
+document.getElementById("startMonday").value = startMonday.toDateString();
+document.getElementById("demo1").innerHTML = rawMarkedText;
+
+var dict = createRelativeDateDict(startMonday, numberOfWeeks);
+var processedText = processMarkers(rawMarkedText);
+document.getElementById("demo2").innerHTML = processedText;
+console.log(processedText);
+
+</script>
+
+
+<div id="footer"></div>
+<script src="lastModified.js"></script>
+</body>
+</html>
+

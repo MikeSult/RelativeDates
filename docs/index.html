@@ -1,0 +1,856 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset='utf-8' />
+  <title>  | Documentation</title>
+  <meta name='viewport' content='width=device-width,initial-scale=1'>
+  <link href='assets/bass.css' type='text/css' rel='stylesheet' />
+  <link href='assets/style.css' type='text/css' rel='stylesheet' />
+  <link href='assets/github.css' type='text/css' rel='stylesheet' />
+  <link href='assets/split.css' type='text/css' rel='stylesheet' />
+</head>
+<body class='documentation m0'>
+    <div class='flex'>
+      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
+        <div class='py1 px2'>
+          <h3 class='mb0 no-anchor'></h3>
+          <div class='mb1'><code></code></div>
+          <input
+            placeholder='Filter'
+            id='filter-input'
+            class='col12 block input'
+            type='text' />
+          <div id='toc'>
+            <ul class='list-reset h5 py1-ul'>
+              
+                
+                <li><a
+                  href='#getmonday'
+                  class="">
+                  getMonday
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createrelativedatedict'
+                  class="">
+                  createRelativeDateDict
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#createrelativedatedict2'
+                  class="">
+                  createRelativeDateDict2
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#showfullmap'
+                  class="">
+                  showFullMap
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#replacemarker'
+                  class="">
+                  replaceMarker
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#replacerelativedates'
+                  class="">
+                  replaceRelativeDates
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#addrelativedates'
+                  class="">
+                  addRelativeDates
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#processmarkers'
+                  class="">
+                  processMarkers
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#checkforreferrer'
+                  class="">
+                  checkForReferrer
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#adddatestopage'
+                  class="">
+                  addDatesToPage
+                  
+                </a>
+                
+                </li>
+              
+                
+                <li><a
+                  href='#adddatestopage2'
+                  class="">
+                  addDatesToPage2
+                  
+                </a>
+                
+                </li>
+              
+            </ul>
+          </div>
+          <div class='mt1 h6 quiet'>
+            <a href='http://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
+          </div>
+        </div>
+      </div>
+      <div id='split-right' class='relative overflow-auto height-viewport-100'>
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='getmonday'>
+      getMonday
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>This function checks to see if the date is a Monday, if not it returns the previous Monday</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>getMonday(date: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">date</a>): any</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>date</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">date</a>)</code>
+	    js date object
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code>any</code>:
+        (date) if date is a monday it returns date otherwise it return the previous monday as a date object
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createrelativedatedict'>
+      createRelativeDateDict
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function creates the associative array with keys like 'week_1_mon'
+and values of the date for that monday.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>createRelativeDateDict(startDate: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">date</a>, howManyWeeks: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>startDate</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">date</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>howManyWeeks</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    the number of weeks to create the associative array
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        dictionary of date marker (index keys) and dates (values)
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='createrelativedatedict2'>
+      createRelativeDateDict2
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function creates the associative array with keys like 'week_1_mon'
+and values of the date for that monday.  This includes a week 0.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>createRelativeDateDict2(startDate: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">date</a>, howManyWeeks: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>startDate</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Date">date</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>howManyWeeks</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
+	    the number of weeks to create the associative array
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></code>:
+        dictionary of date marker (keys) and dates (values)
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='showfullmap'>
+      showFullMap
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function is a debugging utility</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>showFullMap(): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        text readout of the map keys and values
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='replacemarker'>
+      replaceMarker
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function replaces a marker with its associated value</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>replaceMarker(marker: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>marker</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    this makes a change in the document.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='replacerelativedates'>
+      replaceRelativeDates
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function replaces any of tha markers with their associated values</p>
+<p>this function makes changes in the page</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>replaceRelativeDates()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='addrelativedates'>
+      addRelativeDates
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function replaces marker found in the dictionary with their value</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>addRelativeDates(textInput: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, delimitChar: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>textInput</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>delimitChar</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        the text with the replacements inserted
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='processmarkers'>
+      processMarkers
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function adds spans where there were marker like '<em>week_1_mon</em>'
+this is an intermediate step in the replacement process.</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>processMarkers(markedText: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>markedText</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    the input text that has markers
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+    
+      <div class='py1 quiet mt1 prose-big'>Returns</div>
+      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
+        the spans have been inserted into the string.
+
+      
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='checkforreferrer'>
+      checkForReferrer
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function checks to see if there is a referrer to this document (linked from <a href> tag)
+NOT USED</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>checkForReferrer(startMondayList: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+    <div class='py1 quiet mt1 prose-big'>Parameters</div>
+    <div class='prose'>
+      
+        <div class='space-bottom0'>
+          <div>
+            <span class='code bold'>startMondayList</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
+	    changes the startMonday date, this does not work as planned because many sites
+(like Canvas) supress the referrer info.
+
+          </div>
+          
+        </div>
+      
+    </div>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='adddatestopage'>
+      addDatesToPage
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function does the entire process of adding spans then substitution of the dates
+it process the entire html page</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>addDatesToPage()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+          
+          <section class='p2 mb2 clearfix bg-white minishadow'>
+
+  
+  <div class='clearfix'>
+    
+    <h3 class='fl m0' id='adddatestopage2'>
+      addDatesToPage2
+    </h3>
+    
+    
+  </div>
+  
+
+  <p>this function does the entire process of adding spans then substitution of the dates
+it process the entire html page</p>
+
+ 
+  
+    <div class='pre p1 fill-light mt0'>addDatesToPage2()</div>
+   
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</section>
+
+        
+      </div>
+    </div>
+  <script src='assets/anchor.js'></script>
+  <script src='assets/split.js'></script>
+  <script src='assets/site.js'></script>
+</body>
+</html>
